@@ -59,6 +59,7 @@ Actions:
         - Run: pip3 install cargo-lambda
         - Run: source "$HOME/.cargo/env"
         - Run: echo "Building rust functions"
+        - Run: echo "$HOME"
         - Run: cargo lambda build --release
     Compute:
       Type: EC2
