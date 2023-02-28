@@ -54,7 +54,7 @@ Actions:
       Steps:
         - Run: echo "Boostrapping Rust Build Environment"
         - Run: echo "Install Rust.."
-        - Run: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+        - Run: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
         - Run: echo "Install cargo-lambda"
         - Run: pip3 install cargo-lambda
         - Run: ls
