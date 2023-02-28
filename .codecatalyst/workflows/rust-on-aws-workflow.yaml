@@ -61,7 +61,6 @@ Actions:
         - Run: echo "Building rust functions"
         - Run: pwd
         - Run: ls
-        - Run: file ./serverless
         - Run: cd ./serverless/hello
         - Run: cargo lambda build --release
     Compute:
