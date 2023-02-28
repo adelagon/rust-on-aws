@@ -65,8 +65,8 @@ Actions:
         - Run: echo "Building rust functions"
         - Run: echo "$HOME"
         - Run: cd $CATALYST_SOURCE_DIR_WorkflowSource/serverless/lambda/hello
-        - Run: cargo lambda build --release --target-dir $CATALYST_SOURCE_DIR_WorkflowSource/serverless/lambda/target
-        - Run: ls $CATALYST_SOURCE_DIR_WorkflowSource/serverless/lambda/target
+        - Run: cargo lambda build --release
+        - Run: ls $CATALYST_SOURCE_DIR_WorkflowSource/serverless/lambda/hello/target
     Compute:
       Type: EC2
       Fleet: Linux.x86-64.Large
