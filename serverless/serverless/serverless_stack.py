@@ -14,6 +14,6 @@ class ServerlessStack(Stack):
                 runtime=_lambda.Runtime.PROVIDED_AL2,
                 handler="not.required",
                 code=_lambda.Code.from_asset(
-                    "/artifacts/cdk-deploy/RustBinaries"
+                    "/artifacts/cdk-deploy/RustBinaries/serverless/lambda/hello/target/lambda/hello"
                 )
         )
