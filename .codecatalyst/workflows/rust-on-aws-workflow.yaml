@@ -61,7 +61,7 @@ Actions:
         - Run: echo "Building rust functions"
         - Run: echo "$HOME"
         - Run: pwd
-        - Run: cargo lambda build --release
+        - Run: cargo lambda build --release --manifest-path serverless/hello
     Compute:
       Type: EC2
       Fleet: Linux.x86-64.Large
