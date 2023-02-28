@@ -62,3 +62,7 @@ Actions:
         - Role: CodeCatalystPreviewDevelopmentAdministrator-y4kwwj
           Name: adelagon-isengard
       Name: development
+    Caching:
+      FileCaching:
+        target:
+          Path: serverless/lambda/hello/target
