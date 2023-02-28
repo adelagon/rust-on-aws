@@ -19,7 +19,7 @@ class ServerlessStack(Stack):
                 )
         )
 
-        apigw.LambaRestApi(
+        apigw.LambdaRestApi(
             self, "APIEndpoint",
             handler=handler
         )
