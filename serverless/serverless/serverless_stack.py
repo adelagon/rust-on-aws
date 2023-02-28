@@ -2,6 +2,7 @@ from aws_cdk import (
     Duration,
     Stack,
     aws_sqs as sqs,
+    aws_lambda as _lambda,
 )
 from constructs import Construct
 
@@ -18,3 +19,10 @@ class ServerlessStack(Stack):
              self, "ServerlessQueue",
              visibility_timeout=Duration.seconds(300),
         )
+
+        # f = _lambda.Function(self, "hello-rust",
+        #         runtime=_lambda.Runtime.PROVIDED.AL2,
+        #         handler="not.required",
+        #         code=_lambda.Code.from_asset(
+                    
+        #         )
