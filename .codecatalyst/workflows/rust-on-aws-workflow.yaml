@@ -1,4 +1,4 @@
-Name: Workflow_10b9
+Name: serverless-rust-workflow
 SchemaVersion: "1.0"
 
 # Optional - Set automatic triggers.
@@ -19,6 +19,23 @@ Actions:
         - Role: CodeCatalystPreviewDevelopmentAdministrator-y4kwwj
           Name: adelagon-isengard
       Name: development
+    Inputs:
+      Sources:
+        - WorkflowSource
+  AWSCDKdeploy_52:
+    Identifier: aws/cdk-deploy@v1
+    Configuration:
+      CdkRootPath: serverless
+      Region: ap-southeast-1
+      StackName: ServerlessRustStack
+    Timeout: 30
+    Environment:
+      Connections:
+        - Role: CodeCatalystPreviewDevelopmentAdministrator-y4kwwj
+          Name: adelagon-isengard
+      Name: development
+    DependsOn:
+      - AWSCDKbootstrap_f9
     Inputs:
       Sources:
         - WorkflowSource
