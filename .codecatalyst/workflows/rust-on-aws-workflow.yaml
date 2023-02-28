@@ -9,7 +9,7 @@ Triggers:
 
 # Required - Define action configurations.
 Actions:
-  AWSCDKbootstrap_f9:
+  cdk-bootstrap:
     Identifier: aws/cdk-bootstrap@v1
     Configuration:
       Region: ap-southeast-1
@@ -19,10 +19,12 @@ Actions:
         - Role: CodeCatalystPreviewDevelopmentAdministrator-y4kwwj
           Name: adelagon-isengard
       Name: development
+    DependsOn:
+      - build-rust-functions
     Inputs:
       Sources:
         - WorkflowSource
-  AWSCDKdeploy_52:
+  cdk-deploy:
     Identifier: aws/cdk-deploy@v1
     Configuration:
       CdkRootPath: serverless
@@ -35,7 +37,32 @@ Actions:
           Name: adelagon-isengard
       Name: development
     DependsOn:
-      - AWSCDKbootstrap_f9
+      - cdk-bootstrap
     Inputs:
       Sources:
         - WorkflowSource
+  build-rust-functions:
+    Identifier: aws/build@v1
+    Inputs:
+      Sources:
+        - WorkflowSource
+    Outputs:
+      AutoDiscoverReports:
+        Enabled: true
+        ReportNamePrefix: rpt
+    Configuration:
+      Steps:
+        - Run: echo "Boostrapping Rust Build Environment"
+        - Run: echo "Install Rust.."
+        - Run: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+        - Run: echo "Install cargo-lambda"
+        - Run: pip3 install cargo-lambda
+        - Run: ls
+    Compute:
+      Type: EC2
+      Fleet: Linux.x86-64.Large
+    Environment:
+      Connections:
+        - Role: CodeCatalystPreviewDevelopmentAdministrator-y4kwwj
+          Name: adelagon-isengard
+      Name: development
