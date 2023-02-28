@@ -57,7 +57,11 @@ Actions:
         - Run: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
         - Run: echo "Install cargo-lambda"
         - Run: pip3 install cargo-lambda
+        - Run: source "$HOME/.cargo/env"
         - Run: echo "Building rust functions"
+        - Run: pwd
+        - Run: ls
+        - Run: file serverless
         - Run: cd serverless/hello
         - Run: cargo lambda build --release
     Compute:
