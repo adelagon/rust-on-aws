@@ -60,8 +60,8 @@ Actions:
         - Run: source "$HOME/.cargo/env"
         - Run: echo "Building rust functions"
         - Run: echo "$HOME"
-        - Run: pwd
-        - Run: cargo lambda build --release --manifest-path serverless/hello
+        - Run: cd $CATALYST_SOURCE_DIR_WorkflowSource/serverless/hello
+        - Run: cargo lambda build --release
     Compute:
       Type: EC2
       Fleet: Linux.x86-64.Large
