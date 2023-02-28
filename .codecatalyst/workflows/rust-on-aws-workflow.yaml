@@ -39,6 +39,8 @@ Actions:
     DependsOn:
       - cdk-bootstrap
     Inputs:
+      Artifacts:
+        - RustBinaries
       Sources:
         - WorkflowSource
   build-rust-functions:
@@ -53,7 +55,7 @@ Actions:
       Artifacts:
         - Name: RustBinaries
           Files:
-            - serverless/lambda/target/*
+            - serverless/lambda/hello/target/lambda/hello/bootstrap
     Configuration:
       Steps:
         - Run: echo "Boostrapping Rust Build Environment"
