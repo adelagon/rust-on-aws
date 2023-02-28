@@ -60,6 +60,7 @@ Actions:
         - Run: source "$HOME/.cargo/env"
         - Run: echo "Building rust functions"
         - Run: echo "$HOME"
+        - Run: pwd
         - Run: cargo lambda build --release
     Compute:
       Type: EC2
