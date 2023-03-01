@@ -12,7 +12,7 @@ class ServerlessStack(Stack):
     def __init__(self, scope: Construct, construct_id: str, config: dict, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
 
-        rust_handler = _lambda.Function(self, "hello-rust",
+        rust_fn = _lambda.Function(self, "hello-rust",
                 runtime=_lambda.Runtime.PROVIDED_AL2,
                 handler="not.required",
                 code=_lambda.Code.from_asset(
@@ -22,12 +22,12 @@ class ServerlessStack(Stack):
 
         apigw.LambdaRestApi(
             self, "RustAPIEndpoint",
-            handler=rust_handler
+            handler=rust_fn
         )
 
-        python_handler = _lambda.Function(self, "hello-python",
+        python_fn = _lambda.Function(self, "hello-python",
                 runtime=_lambda.Runtime.PYTHON_3_9,
-                handler="hello.handler",
+                handler="app.handler",
                 code=_lambda.Code.from_asset(
                     config["functions"]["python"]["hello"]
                 )
@@ -35,6 +35,6 @@ class ServerlessStack(Stack):
 
         apigw.LambdaRestApi(
             self, "PythonAPIEndpoint",
-            handler=rust_handler
+            handler=python_fn
         )
         
