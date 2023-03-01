@@ -20,8 +20,21 @@ class ServerlessStack(Stack):
                 )
         )
 
-
         apigw.LambdaRestApi(
             self, "RustAPIEndpoint",
             handler=rust_handler
         )
+
+        python_handler = _lambda.Function(self, "hello-python",
+                runtime=_lambda.Runtime.PYTHON_3_9,
+                handler="hello.handler",
+                code=_lambda.Code.from_asset(
+                    config["functions"]["python"]["hello"]
+                )
+        )
+
+        apigw.LambdaRestApi(
+            self, "PythonAPIEndpoint",
+            handler=rust_handler
+        )
+        
