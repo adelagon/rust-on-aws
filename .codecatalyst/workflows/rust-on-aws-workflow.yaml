@@ -40,7 +40,7 @@ Actions:
       Artifacts:
         - Name: RustBinaries
           Files:
-            - serverless/lambda/lambda/builds/*
+            - serverless/lambda/lambda/builds/**/*
     Configuration:
       Steps:
         - Run: echo "Boostrapping Rust Build Environment"
