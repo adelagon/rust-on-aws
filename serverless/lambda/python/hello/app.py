@@ -1,3 +1,9 @@
 def handler(event, context):
-    return "Hello AWS Lambda HTTP request"
+    return {
+        'statusCode': 200,
+        'headers': {
+            'Content-Type': 'text/plain'
+        },
+        'body': 'Hello AWS Lambda HTTP request'
+    }
     
