@@ -40,7 +40,7 @@ Actions:
       Artifacts:
         - Name: RustBinaries
           Files:
-            - serverless/lambda/hello/target/lambda/hello/bootstrap
+            - serverless/lambda/builds/**/*
     Configuration:
       Steps:
         - Run: echo "Boostrapping Rust Build Environment"
@@ -50,8 +50,8 @@ Actions:
         - Run: pip3 install cargo-lambda
         - Run: source "$HOME/.cargo/env"
         - Run: echo "Building Rust functions"
-        - Run: cd $CATALYST_SOURCE_DIR_WorkflowSource/serverless/lambda/hello
-        - Run: cargo lambda build --release
+        - Run: cd $CATALYST_SOURCE_DIR_WorkflowSource/serverless/lambda/rust/hello
+        - Run: cargo lambda build --release --lambda-dir $CATALYST_SOURCE_DIR_WorkflowSource/serverless/lambda/builds
     Compute:
       Type: EC2
       Fleet: Linux.x86-64.Large
