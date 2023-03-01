@@ -49,11 +49,9 @@ Actions:
         - Run: echo "Install cargo-lambda"
         - Run: pip3 install cargo-lambda
         - Run: source "$HOME/.cargo/env"
-        - Run: echo "Building rust functions"
-        - Run: echo "$HOME"
+        - Run: echo "Building Rust functions"
         - Run: cd $CATALYST_SOURCE_DIR_WorkflowSource/serverless/lambda/hello
         - Run: cargo lambda build --release
-        - Run: ls $CATALYST_SOURCE_DIR_WorkflowSource/serverless/lambda/hello/target
     Compute:
       Type: EC2
       Fleet: Linux.x86-64.Large
