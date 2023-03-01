@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 import os
-
+import yaml
 import aws_cdk as cdk
 
 from serverless.serverless_stack import ServerlessStack
 
+with open("./config.yaml") as stream:
+    config = yaml.safe_load(stream)
 
 app = cdk.App()
-ServerlessStack(app, "ServerlessRustStack",
+ServerlessStack(app, "ServerlessRustStack", config
     # If you don't specify 'env', this stack will be environment-agnostic.
     # Account/Region-dependent features and context lookups will not work,
     # but a single synthesized template can be deployed anywhere.

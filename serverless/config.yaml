@@ -1,0 +1,3 @@
+functions:
+  rust:
+    hello: /artifacts/cdk-deploy/RustBinaries/serverless/lambda/builds/hello
